@@ -8,7 +8,26 @@ This is a cleaned-up copy of a site I built for a real wholesale shop (party sup
 ~1,400 products) that is live in production. Shop name, contact details, products and photos here are
 **made-up demo data**. The UI text is in Bahasa Indonesia, like the original.
 
-> Screenshots: _coming soon_ (home page, product page, cart, admin product editor, phone view).
+## Screenshots
+
+All screenshots show the demo data ("Toko Contoh").
+
+**Home page** (desktop): banner slider, side banners, round category pictures and product rows
+
+![Home page on desktop](docs/screenshots/home-desktop.png)
+
+| Product page with variants | Product grid with category filter |
+|---|---|
+| ![Product page with colour variants](docs/screenshots/product-variants.png) | ![Product grid](docs/screenshots/catalog-desktop.png) |
+
+**Cart and WhatsApp checkout**: change quantities, fill in a name (address and note optional), then
+"Pesan via WhatsApp" opens WhatsApp with the whole order written out
+
+![Cart with checkout form](docs/screenshots/cart-checkout.png)
+
+| Home on a phone | Cart on a phone |
+|---|---|
+| <img src="docs/screenshots/home-phone.png" alt="Home page on a phone" width="300"> | <img src="docs/screenshots/cart-phone.png" alt="Cart on a phone" width="300"> |
 
 ## Features
 
