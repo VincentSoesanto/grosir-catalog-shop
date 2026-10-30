@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* Brand colours: yellow + pink */
+@theme {
+  --color-brand-yellow: #f5e400;
+  --color-brand-pink: #e6007e;
+  --color-brand-pink-soft: #ff6fb5;
+  --color-brand-pink-dark: #a8005c;
+  --color-cream: #fffbea; /* soft yellow page background */
+  --color-ink: #1f2328;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+body {
+  @apply bg-cream text-ink antialiased;
+}

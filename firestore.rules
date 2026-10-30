@@ -1,0 +1,52 @@
+rules_version = '2';
+
+// Who may do what in the website's database.
+// Everyone (customers) may READ the catalog, products and testimonials.
+// Only the admin account(s) below may WRITE (change prices, products, testimonials).
+// Replace YOUR_ADMIN_UID with your admin account's UID (the same as VITE_ADMIN_UIDS in .env.local).
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.uid in ['YOUR_ADMIN_UID'];
+    }
+
+    // catalog/meta (categories, list info) and catalog/list-0, list-1, ... (product lists)
+    match /catalog/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // products/<id>: everything the product page shows
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // testimonials/<auto id>: WhatsApp screenshots uploaded by the admin
+    match /testimonials/{testimonialId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // settings/store ("Tampilan Toko") and banners/<id> (uploaded banner pictures)
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /banners/{bannerId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // imports/<auto id>: history of "Impor Foto" (admin only)
+    match /imports/{importId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Anything else: closed
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
